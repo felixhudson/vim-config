@@ -25,6 +25,7 @@ nmap <leader>g :exec "grep -ir " . expand("<cword>"). " *"
 nmap <leader>f :exec "grep -ir foo " 
 nmap <leader>` :tabedit ~/.vimrc<cr>
 nmap <leader>t :tabnew<cr>
+nnoremap <Leader>w :w<CR>
 
 set laststatus=2
 set bg=dark
