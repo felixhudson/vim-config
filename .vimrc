@@ -1,5 +1,6 @@
 " lets use pathogen now
 execute pathogen#infect()
+filetype plugin indent on
 
 colorscheme desert
 if &t_Co > 1
@@ -25,7 +26,8 @@ nmap <leader>g :exec "grep -ir " . expand("<cword>"). " *"
 nmap <leader>f :exec "grep -ir foo " 
 nmap <leader>` :tabedit ~/.vimrc<cr>
 nmap <leader>t :tabnew<cr>
-nnoremap <Leader>w :w<CR>
+nmap <leader>v "*p<cr>
+nmap <leader>w :w<CR>
 
 set laststatus=2
 set bg=dark
@@ -39,7 +41,7 @@ set number
 " allow matching of special charaters in replace
 set magic
 syntax on
-"set autochdir
+" set autochdir
 " open new buffers as tabs
 ":set switchbuf+=usetab,newtab
 set guifont=Consolas:h16
@@ -53,3 +55,8 @@ let g:ctrlp_cmd = 'CtrlP'
 set wildmode=full
 set wildmenu
 
+" go vim stuff
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
