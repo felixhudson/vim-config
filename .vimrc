@@ -52,7 +52,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 "make the command line do better tab completion
-set wildmode=full
+set wildmode=longest,list,full
 set wildmenu
 
 " go vim stuff
