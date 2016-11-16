@@ -46,8 +46,8 @@ syntax on
 ":set switchbuf+=usetab,newtab
 set guifont=Consolas:h16
 
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-let g:UltiSnipsExpandTrigger="<S-tab>"
+"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+"let g:UltiSnipsExpandTrigger="<S-tab>"
 
 " ctrl-p stuff
 let g:ctrlp_map = '<c-p>'
