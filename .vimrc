@@ -29,6 +29,7 @@ nmap <leader>t :tabnew<cr>
 nmap <leader>v "*p<cr>
 nmap <leader>w :w<CR>
 nmap <leader>s :tabnew<CR>:setlocal bt=nofile<CR>
+nmap <leader>a "Ayy
 
 set laststatus=2
 set bg=dark
