@@ -31,7 +31,7 @@ nmap <leader>w :w<CR>
 nmap <leader>s :tabnew<CR>:setlocal bt=nofile<CR>
 nmap <leader>a "Ayy
 nmap <Tab> :tabnext<CR>
-nmap <S-Tab> :tabnext<CR>
+nmap <S-Tab> :tabprevious<CR>
 
 set laststatus=2
 set bg=dark
