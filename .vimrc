@@ -23,7 +23,6 @@ nmap <leader>p "1p
 nmap <leader>o u.
 nmap <leader>n :cn<CR> 
 nmap <leader>g :exec "grep -ir " . expand("<cword>"). " *"
-nmap <leader>f :exec "grep -ir foo " 
 nmap <leader>` :tabedit ~/.vimrc<cr>
 nmap <leader>t :tabnew<cr>
 nmap <leader>v "*p<cr>
@@ -32,6 +31,9 @@ nmap <leader>s :tabnew<CR>:setlocal bt=nofile<CR>
 nmap <leader>a "Ayy
 nmap <Tab> :tabnext<CR>
 nmap <S-Tab> :tabprevious<CR>
+nmap <leader>c :silent !osascript ~/bin/refresh-chrome.scpt <CR>
+nmap <leader>m :CtrlPMRU<CR>
+nmap <leader>l :Rlog<CR>
 
 set laststatus=2
 set bg=dark
@@ -66,3 +68,22 @@ au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
+
+" git grep is fast!
+
+func GitGrep(...)
+  let save = &grepprg
+  set grepprg=git\ grep\ -n\ $*
+  let s = 'grep'
+  for i in a:000
+    let s = s . ' ' . i
+  endfor
+  exe s
+  let &grepprg = save
+endfun
+command -nargs=? G call GitGrep(<f-args>)
+func GitGrepWord()
+  normal! "zyiw
+  call GitGrep('-w -e ', getreg('z'))
+endf
+nmap <leader>f :call GitGrepWord()<CR>
