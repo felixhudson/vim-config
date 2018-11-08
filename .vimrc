@@ -3,6 +3,7 @@ execute pathogen#infect()
 filetype plugin indent on
 
 colorscheme desert
+hi QuickFixLine guibg=DarkCyan
 if &t_Co > 1
    syntax enable
 endif
@@ -11,6 +12,7 @@ set expandtab
 set shiftwidth=2 
 set ai
 set colorcolumn=80
+set diffopt=filler,vertical
 map <F2> :NERDTreeToggle<CR>
 
 imap    jk  <Esc>
@@ -21,7 +23,7 @@ autocmd FileType ruby nnoremap <buffer> <leader>r :exec '!ruby' shellescape(@%, 
 autocmd FileType ruby nnoremap <buffer> <leader>e :exec '!rspec'<cr>
 nmap <leader>p "1p
 nmap <leader>o u.
-nmap <leader>n :cn<CR> 
+nmap <leader>n @:<CR> 
 nmap <leader>g :exec "grep -ir " . expand("<cword>"). " *"
 nmap <leader>` :tabedit ~/.vimrc<cr>
 nmap <leader>t :tabnew<cr>
@@ -34,6 +36,10 @@ nmap <S-Tab> :tabprevious<CR>
 nmap <leader>c :silent !osascript ~/bin/refresh-chrome.scpt <CR>
 nmap <leader>m :CtrlPMRU<CR>
 nmap <leader>l :Rlog<CR>
+nmap <silent> <C-J> :wincmd j<CR> 
+nmap <silent> <C-K> :wincmd k<CR> 
+nmap <silent> <C-H> :wincmd h<CR> 
+nmap <silent> <C-L> :wincmd l<CR> 
 
 set laststatus=2
 set bg=dark
@@ -53,11 +59,15 @@ syntax on
 set guifont=Consolas:h16
 
 "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-"let g:UltiSnipsExpandTrigger="<S-tab>"
+let g:UltiSnipsExpandTrigger="<S-tab>"
+"let g:SuperTabContextTextFileTypeExclusions = '*.csv'
 
 " ctrl-p stuff
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" make netrw open files in a vertical split
+let g:netrw_browse_split = 2
 
 "make the command line do better tab completion
 set wildmode=longest,list,full
@@ -73,7 +83,7 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 
 func GitGrep(...)
   let save = &grepprg
-  set grepprg=git\ grep\ -n\ $*
+  set grepprg=git\ grep\ -i\ -n\ $*
   let s = 'grep'
   for i in a:000
     let s = s . ' ' . i
