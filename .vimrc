@@ -11,6 +11,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'ervandew/supertab'
+Plugin 'ctrlpvim/ctrlp.vim'
+
+
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 
@@ -79,6 +85,7 @@ set guifont=Consolas:h16
 "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:UltiSnipsExpandTrigger="<S-tab>"
 "let g:SuperTabContextTextFileTypeExclusions = '*.csv'
+
 
 " ctrl-p stuff
 let g:ctrlp_map = '<c-p>'
