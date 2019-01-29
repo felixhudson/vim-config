@@ -12,6 +12,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
 
 Plugin 'ervandew/supertab'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -80,7 +81,7 @@ syntax on
 " set autochdir
 " open new buffers as tabs
 ":set switchbuf+=usetab,newtab
-set guifont=Consolas:h16
+set guifont=Menlo-Regular:h15
 
 "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:UltiSnipsExpandTrigger="<S-tab>"
