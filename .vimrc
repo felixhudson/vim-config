@@ -13,9 +13,15 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'SirVer/ultisnips'
 
-Plugin 'ervandew/supertab'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'fatih/vim-go'
+Plugin 'w0rp/ale'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-surround'
+Plugin 'mechatroner/rainbow_csv'
 
 
 " add all your plugins here (note older versions of Vundle
@@ -43,9 +49,11 @@ map <F2> :NERDTreeToggle<CR>
 imap    jk  <Esc>
 let mapleader = " "
 autocmd FileType python nnoremap <buffer> <leader>r :exec '!python' shellescape(@%, 1)<cr>
-autocmd FileType python nnoremap <buffer> <leader>e :exec '!python -m unittest discover'<cr>
+autocmd FileType python nnoremap <buffer> <leader>e :exec '!pytest'<cr>
 autocmd FileType ruby nnoremap <buffer> <leader>r :exec '!ruby' shellescape(@%, 1)<cr>
 autocmd FileType ruby nnoremap <buffer> <leader>e :exec '!rspec'<cr>
+let g:ale_python_pylint_options = '--load-plugins pylint_django'
+set iskeyword-=_
 nmap <leader>p "1p
 nmap <leader>o u.
 nmap <leader>n @:<CR> 
@@ -56,7 +64,7 @@ nmap <leader>v "*p<cr>
 nmap <leader>w :w<CR>
 nmap <leader>s :tabnew<CR>:setlocal bt=nofile<CR>
 nmap <leader>a "Ayy
-nmap <Tab> :tabnext<CR>
+"nmap <Tab> :tabnext<CR>
 nmap <S-Tab> :tabprevious<CR>
 nmap <leader>c :silent !osascript ~/bin/refresh-chrome.scpt <CR>
 nmap <leader>m :CtrlPMRU<CR>
@@ -83,7 +91,7 @@ syntax on
 ":set switchbuf+=usetab,newtab
 set guifont=Menlo-Regular:h15
 
-"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:UltiSnipsExpandTrigger="<S-tab>"
 "let g:SuperTabContextTextFileTypeExclusions = '*.csv'
 
@@ -123,3 +131,9 @@ func GitGrepWord()
   call GitGrep('-w -e ', getreg('z'))
 endf
 nmap <leader>f :call GitGrepWord()<CR>
+
+  let g:SuperTabDefaultCompletionType = 'context'
+  autocmd FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, "<c-p>") |
+    \ endif
