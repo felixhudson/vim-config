@@ -66,6 +66,7 @@ nmap <leader>s :tabnew<CR>:setlocal bt=nofile<CR>
 nmap <leader>a "Ayy
 "nmap <Tab> :tabnext<CR>
 nmap <S-Tab> :tabprevious<CR>
+nmap <C-I> g,<CR>
 nmap <leader>c :silent !osascript ~/bin/refresh-chrome.scpt <CR>
 nmap <leader>m :CtrlPMRU<CR>
 nmap <leader>l :Rlog<CR>
